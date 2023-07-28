@@ -23,8 +23,14 @@ public class Opportunity {
     private String location;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany(mappedBy = "opportunity")
+    @ManyToMany
+    @JoinTable(
+            name = "opportunity_qualification",
+            joinColumns = @JoinColumn(name = "opportunity_id"),
+            inverseJoinColumns = @JoinColumn(name = "qualification_id"))
     private Set<Qualification> qualifications;
     @ManyToOne
     private Provider provider;
+    @OneToMany(mappedBy = "opportunity")
+    private Set<Proposal> proposals;
 }

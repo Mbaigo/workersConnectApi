@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Collection;
 import java.util.Set;
 
 @Entity @Data @AllArgsConstructor @NoArgsConstructor
@@ -17,13 +16,15 @@ public class Worker {
     private String title;
     //un appercu de vous
     private String description;
-    private String lastDiplome;
+    private String lastdiplome;
+    private String phoneNumber;
     private String country;
+    private String city;
     //heure locale
     private String localHour;
-    private String city;
+    //files
+    private String fileDiplome;
     private String picture;
-    private String phoneNumber;
     private String bankAccountNumber;
     private String bankName;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,5 +34,5 @@ public class Worker {
     @OneToMany(mappedBy = "worker")
     private Set<Competence> competences;
     @OneToMany(mappedBy = "worker")
-    private Set<WorkerJob> workerJobs;
+    private Set<Proposal> proposals;
 }

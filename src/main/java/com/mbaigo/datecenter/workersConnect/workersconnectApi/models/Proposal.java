@@ -4,15 +4,17 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+//class decrivant l'offre du freelancer par rapport a une offre publiée
 @Entity @Data @AllArgsConstructor @NoArgsConstructor
-public class WorkerJob {
+public class Proposal {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String opportunityTitle;
+    private String sommary;
+    private String file;
     private int budget;
+    private boolean etat;
     @ManyToOne
     private Worker worker;
-    @OneToOne
+    @ManyToOne
     private Opportunity opportunity;
 }
