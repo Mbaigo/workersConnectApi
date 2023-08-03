@@ -1,17 +1,19 @@
 package com.mbaigo.datecenter.workersConnect.workersconnectApi.services.Interfaces;
 
+import com.mbaigo.datecenter.workersConnect.workersconnectApi.dto.OpportunityDTO;
+import com.mbaigo.datecenter.workersConnect.workersconnectApi.dto.ProviderDTO;
 import com.mbaigo.datecenter.workersConnect.workersconnectApi.models.Opportunity;
 import com.mbaigo.datecenter.workersConnect.workersconnectApi.models.Provider;
 
 import java.util.Collection;
 
 public interface ProviderService {
-    public Provider addProvider(Provider provider);
-    public Provider getById(Long id);
-    public Collection<Provider> getAllProviders();
-    public Provider updateProvider(Long id);
+    public ProviderDTO addProvider(Provider provider);
+    public ProviderDTO getById(Long id);
+    public Collection<ProviderDTO> getAllProviders();
+    public ProviderDTO updateProvider(Long id, ProviderDTO providerDTO);
     public boolean delete(Long id);
-    public Collection<Opportunity> getByProviderId(Long providerId);
-    public Provider getByTitle(String title);
-    public Provider getByEmail(String email);
+    public Collection<OpportunityDTO> getByProviderId(Long providerId);
+    public ProviderDTO getByTitle(String title);
+    public ProviderDTO getByEmail(String email);
 }

@@ -8,8 +8,8 @@ import java.util.Collection;
 
 @Repository
 public interface ProviderRepository extends JpaRepository<Provider, Long> {
-    public Provider getByEmail(String email);
-    public Provider getByTitle(String title);
-    public Collection<Provider> getByLocation(String location);
-    public Provider getByPhoneNumber(String phoneNumber);
+    public Provider findByEmail(String email);
+    public Provider findByTitle(String title);
+    public Collection<Provider> findByLocation(String location);
+    public Provider findByPhoneNumber(String phoneNumber);
 }

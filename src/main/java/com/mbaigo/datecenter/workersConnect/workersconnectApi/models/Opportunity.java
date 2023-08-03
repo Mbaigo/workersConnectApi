@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
 
@@ -15,7 +17,7 @@ public class Opportunity {
     private String description;
     //buget pour l'annonce
     private BigDecimal budget;
-    private Date publicationDate;
+    private LocalDateTime publicationDate =  LocalDateTime.now();
     //état de la publication, ouverte ou fermée
     private boolean status;
     //le niveau requis pour postuler a ce publication, par exemple senior, junior, associate

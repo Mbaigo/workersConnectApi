@@ -1,21 +1,23 @@
 package com.mbaigo.datecenter.workersConnect.workersconnectApi.services.Interfaces;
 
+import com.mbaigo.datecenter.workersConnect.workersconnectApi.dto.OpportunityDTO;
 import com.mbaigo.datecenter.workersConnect.workersconnectApi.models.Opportunity;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Date;
 
 public interface OpportunityService {
-    public Collection<Opportunity> getByQualificationTitle(String title);
-    public Collection<Opportunity> getByProviderEmail(String email);
-    public Collection<Opportunity> getByProviderTitle(String title);
-    public Collection<Opportunity> getByProviderId(Long providerId);
-    public Opportunity findByTitle(String title);
-    public Collection<Opportunity> getByLocation(String location);
-    public Collection<Opportunity> getByStatus(boolean status);
-    public Collection<Opportunity> getByPublicationDate(Date date);
+    public Collection<OpportunityDTO> getByQualificationTitle(String title);
+    public Collection<OpportunityDTO> getByProviderEmail(String email);
+    public Collection<OpportunityDTO> getByProviderTitle(String title);
+    public Collection<OpportunityDTO> getByProviderId(Long providerId);
+    public Collection<OpportunityDTO> findByTitle(String title);
+    public Collection<OpportunityDTO> getByLocation(String location);
+    public Collection<OpportunityDTO> getByStatus(boolean status);
+    public Collection<OpportunityDTO> getByPublicationDate(LocalDateTime date);
     public  Opportunity add(Opportunity opportunity);
-    public Opportunity update(Opportunity opportunity);
-    public Collection<Opportunity> getAll();
+    public OpportunityDTO update(Long id,Opportunity opportunity);
+    public Collection<OpportunityDTO> getAll();
 
 }

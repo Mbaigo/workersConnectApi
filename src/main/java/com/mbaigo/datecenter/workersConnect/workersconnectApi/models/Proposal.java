@@ -10,7 +10,6 @@ public class Proposal {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String sommary;
-    private String file;
     private int budget;
     private boolean etat;
     @ManyToOne
