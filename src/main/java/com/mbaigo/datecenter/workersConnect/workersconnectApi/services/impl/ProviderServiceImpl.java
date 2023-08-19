@@ -66,7 +66,8 @@ public class ProviderServiceImpl implements ProviderService {
         Provider provider= providerRepository.findById(id).get();
         provider.setDescription(providerDTO.getDescription());
         provider.setTitle(providerDTO.getTitle());
-        provider.setLocation(providerDTO.getLocation());
+        provider.setCity(providerDTO.getCity());
+        provider.setCountry(providerDTO.getCountry());
         provider.setEmail(providerDTO.getEmail());
         providerDTO.setPhoneNumber(providerDTO.getPhoneNumber());
         providerRepository.save(provider);
@@ -121,6 +122,45 @@ public class ProviderServiceImpl implements ProviderService {
     @Override
     public ProviderDTO getByEmail(String email) {
         Provider provider = providerRepository.findByEmail(email);
+        ProviderDTO providerDTO = modelMapper.map(provider,ProviderDTO.class);
+        return providerDTO;
+    }
+
+    /**
+     * @param city
+     * @return
+     */
+    @Override
+    public Collection<ProviderDTO> getByCity(String city) {
+        Collection<ProviderDTO> providerDTOS= providerRepository.findByCity(city)
+                .stream()
+                .map(provider -> modelMapper
+                        .map(provider, ProviderDTO.class))
+                .collect(Collectors.toList());
+        return providerDTOS;
+    }
+
+    /**
+     * @param country
+     * @return
+     */
+    @Override
+    public Collection<ProviderDTO> getByCountry(String country) {
+        Collection<ProviderDTO> providerDTOS= providerRepository.findByCountry(country)
+                                                .stream()
+                                                    .map(provider -> modelMapper
+                                                            .map(provider, ProviderDTO.class))
+                                                                .collect(Collectors.toList());
+        return providerDTOS;
+    }
+
+    /**
+     * @param phoneNumber
+     * @return
+     */
+    @Override
+    public ProviderDTO getByPhoneNumber(String phoneNumber) {
+        Provider provider=providerRepository.findByPhoneNumber(phoneNumber);
         ProviderDTO providerDTO = modelMapper.map(provider,ProviderDTO.class);
         return providerDTO;
     }

@@ -16,4 +16,7 @@ public interface ProviderService {
     public Collection<OpportunityDTO> getByProviderId(Long providerId);
     public ProviderDTO getByTitle(String title);
     public ProviderDTO getByEmail(String email);
+    public Collection<ProviderDTO> getByCity(String city);
+    public Collection<ProviderDTO> getByCountry(String country);
+    public ProviderDTO getByPhoneNumber(String phoneNumber);
 }

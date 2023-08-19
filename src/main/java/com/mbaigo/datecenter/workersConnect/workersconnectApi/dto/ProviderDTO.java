@@ -8,6 +8,7 @@ public class ProviderDTO {
     private String title;
     private String description;
     private String email;
-    private  String location;
+    private  String city;
+    private String country;
     private String phoneNumber;
 }

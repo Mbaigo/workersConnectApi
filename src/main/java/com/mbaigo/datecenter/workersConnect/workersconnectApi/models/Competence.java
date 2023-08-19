@@ -1,5 +1,6 @@
 package com.mbaigo.datecenter.workersConnect.workersconnectApi.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,10 +9,19 @@ import lombok.*;
 public class Competence {
     private String title;
     private String level;
+    private int annnee;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    @ManyToOne @JsonBackReference
     private Worker worker;
+    public int getAnnnee() {
+        return annnee;
+    }
+
+    public void setAnnnee(int annnee) {
+        this.annnee = annnee;
+    }
+
     public String getTitle() {
         return title;
     }

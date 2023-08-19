@@ -3,6 +3,7 @@ package com.mbaigo.datecenter.workersConnect.workersconnectApi.services.impl;
 import com.mbaigo.datecenter.workersConnect.workersconnectApi.dao.ProposalRepository;
 import com.mbaigo.datecenter.workersConnect.workersconnectApi.dto.ProposalDTO;
 import com.mbaigo.datecenter.workersConnect.workersconnectApi.models.Proposal;
+import com.mbaigo.datecenter.workersConnect.workersconnectApi.models.State;
 import com.mbaigo.datecenter.workersConnect.workersconnectApi.services.Interfaces.ProposalbService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,7 @@ public class ProposalServiceImpl implements ProposalbService {
     @Override
     public ProposalDTO update(Long id, ProposalDTO proposalDTO) {
         Proposal p = proposalRepository.findById(id).get();
-        p.setSommary(proposalDTO.getSommary());
+        p.setSummary(proposalDTO.getSommary());
         p.setBudget(proposalDTO.getBudget());
         p.setOpportunity(proposalDTO.getOpportunity());
         proposalRepository.save(p);
@@ -78,9 +79,9 @@ public class ProposalServiceImpl implements ProposalbService {
      * @return
      */
     @Override
-    public Collection<ProposalDTO> getByOpportunityStatus(boolean status) {
+    public Collection<ProposalDTO> getByOpportunityStatus(State status) {
         Collection<ProposalDTO> proposalDTOS = proposalRepository
-                                                    .findByOpportunityStatus(status)
+                                                    .findByOpportunity_Status(status)
                                                         .stream()
                                                             .map(props->modelMapper.map(props,ProposalDTO.class))
                                                                 .collect(Collectors.toList());

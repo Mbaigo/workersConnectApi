@@ -1,14 +1,19 @@
 package com.mbaigo.datecenter.workersConnect.workersconnectApi.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
 
+import java.util.Collection;
 import java.util.Set;
 
 @Entity @Data @AllArgsConstructor @NoArgsConstructor
 public class Worker {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  Long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -27,12 +32,15 @@ public class Worker {
     private String picture;
     private String bankAccountNumber;
     private String bankName;
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+
+/*    @OneToMany(mappedBy = "worker")
+    @JsonManagedReference
+    private Collection<Experience> experiences;*/
     @OneToMany(mappedBy = "worker")
-    private Set<Experience> experiences;
+    @JsonManagedReference
+    private Collection<Competence> competences;
     @OneToMany(mappedBy = "worker")
-    private Set<Competence> competences;
+    private Collection<Proposal> proposals;
     @OneToMany(mappedBy = "worker")
-    private Set<Proposal> proposals;
+    private Collection<Chat> chatCollection;
 }

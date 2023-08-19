@@ -32,10 +32,19 @@ public class QualificationServiceImpl implements QualificationService {
     }
 
     /**
-     * @param id
+     * @param id 
      * @return
      */
     @Override
+    public Collection<QualificationDTO> getByOpportunityId(Long id) {
+        return qualificationRepository.findByOpportunity_Id(id);
+    }
+
+    /**
+     * @param id
+     * @return
+     */
+  /*  @Override
     public Collection<QualificationDTO> getByOpportunityId(Long id) {
         Collection<QualificationDTO> qualificationDTOS =qualificationRepository
                                                             .findByOpportunityId(id)
@@ -43,7 +52,7 @@ public class QualificationServiceImpl implements QualificationService {
                                                                     .map(qualification,QualificationDTO.class))
                                                                         .collect(Collectors.toList());
         return qualificationDTOS;
-    }
+    }*/
 
     /**
      * @param id

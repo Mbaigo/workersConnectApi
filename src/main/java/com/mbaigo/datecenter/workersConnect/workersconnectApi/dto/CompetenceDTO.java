@@ -8,4 +8,5 @@ import lombok.NoArgsConstructor;
 public class CompetenceDTO {
     private String title;
     private String level;
+    private int annnee;
 }

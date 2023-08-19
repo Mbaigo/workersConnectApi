@@ -5,17 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Collection;
-
-//class decrivant l'offre du freelancer par rapport a une offre publiée
-@Entity @Data @AllArgsConstructor @NoArgsConstructor
-public class Proposal {
+@Entity @Data @NoArgsConstructor @AllArgsConstructor
+public class Chat {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String summary;
-    private int budget;
-    //Designe l'état de l'opportunité
-    private State etat=State.OPEN;
+    private String message;
     @ManyToOne
     private Worker worker;
     @ManyToOne

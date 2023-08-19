@@ -1,23 +1,29 @@
 package com.mbaigo.datecenter.workersConnect.workersconnectApi.services.Interfaces;
 
 import com.mbaigo.datecenter.workersConnect.workersconnectApi.dto.OpportunityDTO;
+import com.mbaigo.datecenter.workersConnect.workersconnectApi.dto.QualificationDTO;
 import com.mbaigo.datecenter.workersConnect.workersconnectApi.models.Opportunity;
+import com.mbaigo.datecenter.workersConnect.workersconnectApi.models.Qualification;
+import com.mbaigo.datecenter.workersConnect.workersconnectApi.models.State;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 public interface OpportunityService {
-    public Collection<OpportunityDTO> getByQualificationTitle(String title);
-    public Collection<OpportunityDTO> getByProviderEmail(String email);
-    public Collection<OpportunityDTO> getByProviderTitle(String title);
-    public Collection<OpportunityDTO> getByProviderId(Long providerId);
-    public Collection<OpportunityDTO> findByTitle(String title);
+    public Collection<OpportunityDTO> getByQualifications_Title(String title);
+    public Collection<OpportunityDTO> getByProvider_Email(String email);
+    public Collection<OpportunityDTO> getByProvider_Title(String title);
+    public Collection<OpportunityDTO> getByProvider_Id(Long providerId);
+    public Collection<OpportunityDTO> getByTitle(String title);
     public Collection<OpportunityDTO> getByLocation(String location);
-    public Collection<OpportunityDTO> getByStatus(boolean status);
+    public Collection<OpportunityDTO> getByStatus(State status);
     public Collection<OpportunityDTO> getByPublicationDate(LocalDateTime date);
-    public  Opportunity add(Opportunity opportunity);
-    public OpportunityDTO update(Long id,Opportunity opportunity);
+    public  Opportunity addOpportunity(OpportunityDTO opportunity, List<Qualification> qualifications);
+    public OpportunityDTO updateOpportunity(Long id,Opportunity opportunity);
     public Collection<OpportunityDTO> getAll();
+    Collection<QualificationDTO>  getQualificationsByOpportunityId(Long id);
 
 }

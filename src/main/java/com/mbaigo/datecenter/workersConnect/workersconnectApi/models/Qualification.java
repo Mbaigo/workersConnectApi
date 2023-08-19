@@ -1,7 +1,9 @@
 package com.mbaigo.datecenter.workersConnect.workersconnectApi.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -9,8 +11,8 @@ public class Qualification {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    @ManyToMany(mappedBy = "qualifications")
-    private Set<Opportunity> opportunities;
+    @ManyToOne @JsonBackReference
+    private  Opportunity opportunity;
 
     public Qualification() {
     }
@@ -29,5 +31,12 @@ public class Qualification {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Opportunity getOpportunity() {
+        return opportunity;
+    }
+    public void setOpportunity(Opportunity opportunity) {
+        this.opportunity = opportunity;
     }
 }

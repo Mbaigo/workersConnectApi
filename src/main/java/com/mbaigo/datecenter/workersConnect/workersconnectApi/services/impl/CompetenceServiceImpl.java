@@ -22,14 +22,12 @@ public class CompetenceServiceImpl implements CompetenceService {
     }
 
     @Override
-    public Optional<CompetenceDTO> update(Long id, CompetenceDTO competence) {
+    public Optional<Competence> update(Long id, CompetenceDTO competence) {
        Optional<Competence> c = competenceRepository.findById(id);
        Competence competence1=c.orElse(new Competence());
        competence1.setTitle(competence.getTitle());
        competence1.setLevel(competence.getLevel());
-       competenceRepository.save(competence1);
-        Optional<CompetenceDTO> competenceDTO = Optional.ofNullable(modelMapper.map(competence1, CompetenceDTO.class));
-        return competenceDTO;
+       return Optional.of(competenceRepository.save(competence1));
     }
     @Override
     public List<Competence> getAll() {
@@ -37,9 +35,8 @@ public class CompetenceServiceImpl implements CompetenceService {
     }
 
     @Override
-    public CompetenceDTO getById(Long id) {
-        Optional<Competence> c= competenceRepository.findById(id);
-        CompetenceDTO dto= modelMapper.map(c, CompetenceDTO.class);
-        return dto;
+    public Competence getById(Long id) {
+        return competenceRepository.findById(id).get();
     }
+
 }

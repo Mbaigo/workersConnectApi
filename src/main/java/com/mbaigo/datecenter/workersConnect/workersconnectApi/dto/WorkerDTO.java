@@ -1,8 +1,12 @@
 package com.mbaigo.datecenter.workersConnect.workersconnectApi.dto;
 
+import com.mbaigo.datecenter.workersConnect.workersconnectApi.models.Competence;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Collection;
+import java.util.Set;
 
 @Data @AllArgsConstructor @NoArgsConstructor
 public class WorkerDTO {
@@ -24,4 +28,5 @@ public class WorkerDTO {
     private String picture;
     private String bankAccountNumber;
     private String bankName;
+    private Set<Competence> competences;
 }

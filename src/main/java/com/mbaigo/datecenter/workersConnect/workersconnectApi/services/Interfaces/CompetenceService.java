@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface CompetenceService {
     public Competence add(Competence competence);
-    public Optional<CompetenceDTO> update(Long id, CompetenceDTO competence);
+    public Optional<Competence> update(Long id, CompetenceDTO competence);
     public List<Competence> getAll();
-    public CompetenceDTO getById(Long id);
+    public Competence getById(Long id);
 }

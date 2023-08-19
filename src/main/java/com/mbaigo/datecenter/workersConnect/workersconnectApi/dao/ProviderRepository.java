@@ -10,6 +10,8 @@ import java.util.Collection;
 public interface ProviderRepository extends JpaRepository<Provider, Long> {
     public Provider findByEmail(String email);
     public Provider findByTitle(String title);
-    public Collection<Provider> findByLocation(String location);
+   public Collection<Provider> findByCity(String city);
+   public Collection<Provider> findByCountry(String country);
+
     public Provider findByPhoneNumber(String phoneNumber);
 }
